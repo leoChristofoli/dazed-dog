@@ -1,4 +1,9 @@
-<div *ngFor="let item of items | async" >
-  <app-item-detail [item]='item'></app-item-detail>
+
+<div class="container-fluid">
+  <app-item-form></app-item-form>
+  <div *ngFor="let item of items | async" >
+    <app-item-detail [item]='item'></app-item-detail>
+  </div>
+  <button (click)='deleteItems()'>Delete Entire List</button>
 </div>
-<button (click)='deleteItems()'>Delete Entire List</button>
+      <p><button class="btn btn-default" (click)="logout()">Logout</button></p>

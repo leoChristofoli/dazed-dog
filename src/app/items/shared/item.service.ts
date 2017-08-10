@@ -10,9 +10,11 @@ export class ItemService {
   items: FirebaseListObservable<Item[]> = null;
   item: FirebaseObjectObservable<Item> = null;
 
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private db: AngularFireDatabase) {
+    console.log('serv contr');
+  }
 
-  getItemsList(query = {}): FirebaseListObservable<Item[]> {
+  getItemsList(query = {}) {
     this.items = this.db.list(this.basePath, {
       query: query
     });
@@ -21,7 +23,7 @@ export class ItemService {
   }
 
   getItem(key: string): FirebaseObjectObservable<Item> {
-    const itemPath =  `${this.basePath}/${key}`;
+    const itemPath = `${this.basePath}/${key}`;
     this.item = this.db.object(itemPath);
 
     return this.item;
@@ -52,6 +54,7 @@ export class ItemService {
 
   // Default error handling for all actions
   private handleError(error) {
+    console.log('++++++++++++++++++++++++++++');
     console.log(error);
   }
 

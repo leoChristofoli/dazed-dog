@@ -18,11 +18,11 @@ export class ItemDetailComponent implements OnInit {
   }
 
   updateTimeStamp() {
-    let date = new Date();
-    this.itemSvc.updateItem(this.item.$key, { timeStamp: date })
+    const date = new Date();
+    this.itemSvc.updateItem(this.item.$key, { timeStamp: date });
   }
   updateActive(value: boolean) {
-    this.itemSvc.updateItem(this.item.$key, { active: value })
+    this.itemSvc.updateItem(this.item.$key, { active: value });
   }
   deleteItem() {
     this.itemSvc.deleteItem(this.item.$key)

@@ -1,13 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { ItemsListComponent } from './items/items-list/items-list.component';
 import { ItemDetailComponent } from './items/item-detail/item-detail.component';
 import { ItemFormComponent } from './items/item-form/item-form.component';
+import { AuthService } from './auth/auth.service';
 
 import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 export const firebaseConfig = {
     apiKey: "AIzaSyBzn99u-owJiHhCyh-rsIrZTLT4s-kYuAU",
@@ -18,19 +23,30 @@ export const firebaseConfig = {
     messagingSenderId: "205853149405"
 };
 
+const routes: Routes = [
+  {
+    path: '',
+    component: ItemsListComponent
+  },
+  { path: 'login', component: LoginPageComponent }
+];
+
 @NgModule({
   declarations: [
     AppComponent,
     ItemsListComponent,
     ItemDetailComponent,
-    ItemFormComponent
+    ItemFormComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
-    AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireModule.initializeApp(firebaseConfig, 'dazed-dog'),
+    AngularFireDatabaseModule,
+    FormsModule,
+    RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [AuthService, AngularFireAuth],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
