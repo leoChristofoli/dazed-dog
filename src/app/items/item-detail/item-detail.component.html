@@ -1,8 +1,24 @@
 
-    <h5>{{ item.title || 'missing title' }}</h5>
-    Active: {{ item.active }}
-    {{ item.timeStamp | date: 'medium' }}
-    <button (click)='updateTimeStamp()'>Update Timestamp</button>
-
-    <input id="check" type="checkbox" [(ngModel)]="item.active" (click)='updateActive(!item.active)' aria-label="active">
-    <span (click)='deleteItem()'>Delete</span>
+<div class="container is-fluid">
+    <div class="box">
+        <div class="columns">
+            <div class="column">
+                <div class="content">
+                    <p>
+                        <strong>{{ item.title || 'missing title' }}</strong>
+                        <span *ngIf='item.active' class="tag is-info">IS DONE!</span>
+                    </p>
+                {{ item.timeStamp | date: 'medium' }}
+                <button class="button is-primary" (click)='updateTimeStamp()'>Update Timestamp</button>
+                </div>
+            </div>
+            <div class="column">
+                <label class="checkbox">
+                    <input id="check" type="checkbox" [(ngModel)]="item.active" (click)='updateActive(!item.active)' aria-label="active">
+                    Mark as done
+                </label>
+                <span class="button is-danger is-small" (click)='deleteItem()'>Delete</span>
+            </div>
+        </div>
+    </div>
+</div>

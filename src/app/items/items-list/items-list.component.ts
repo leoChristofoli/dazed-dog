@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ItemService } from '../shared/item.service';
@@ -10,7 +10,8 @@ import { AuthService } from '../../auth/auth.service';
   selector: 'app-items-list',
   templateUrl: './items-list.component.html',
   styleUrls: ['./items-list.component.css'],
-  providers: [ItemService]
+  providers: [ItemService],
+
 })
 export class ItemsListComponent implements OnInit {
 
