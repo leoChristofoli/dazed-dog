@@ -6,7 +6,8 @@
                 <div class="content">
                     <p>
                         <strong>{{ item.title || 'missing title' }}</strong>
-                        <span *ngIf='item.active' class="tag is-info">IS DONE!</span>
+                        <span class="tag is-info"
+                            [ngClass]="(item.active)?'is-danger':'is-info' " >IS DONE!</span>
                     </p>
                 {{ item.timeStamp | date: 'medium' }}
                 <button class="button is-primary" (click)='updateTimeStamp()'>Update Timestamp</button>
